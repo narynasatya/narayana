@@ -15,7 +15,8 @@ app.post("/pagenate",function(req , res)
 	 console.log("paginate");
 
 swapi.get('http://swapi.co/api/people/').then(function (result) {
-    console.log(result.results.length);
+    //console.log(result.results.length);
+	console.log(result)
     return result.nextPage();
 }).then(function (result) {
     //console.log(result);
@@ -26,14 +27,66 @@ swapi.get('http://swapi.co/api/people/').then(function (result) {
 }).catch(function (err) {
     //console.log(err);
 });
-
-
  });
- 
- 
+ app.post("/peoples",function(req , res)
+ {
+	 console.log("paginate");
+
+swapi.get('http://swapi.co/api/people/').then(function (result) {
+    //console.log(result.results.length);
+	console.log(result)
+    return result.nextPage();
+}).then(function (result) {
+    //console.log(result);
+    return result.previousPage();
+}).then(function (result) {
+	
+    //console.log(result);
+}).catch(function (err) {
+    //console.log(err);
+});
+ });
+ app.post("/planets",function(req , res)
+ {
+	 console.log("paginate");
+
+swapi.get('http://swapi.co/api/planets/').then(function (result) {
+    //console.log(result.results.length);
+	console.log(result)
+    return result.nextPage();
+}).then(function (result) {
+    //console.log(result);
+    return result.previousPage();
+}).then(function (result) {
+	
+    //console.log(result);
+}).catch(function (err) {
+    //console.log(err);
+});
+ });
+ app.post("/vehicles",function(req , res)
+ {
+ swapi.get('http://swapi.co/api/vehicles/').then(function (result) {
+    //console.log(result.results.length);
+	console.log(result)
+    return result.nextPage();
+}).then(function (result) {
+    //console.log(result);
+    return result.previousPage();
+}).then(function (result) {
+	
+    //console.log(result);
+}).catch(function (err) {
+    //console.log(err);
+});
+ });
  app.get("/",function(req , res)
  {
-  var html = '<form action="/pagenate" method="post">' +
+  var html = '<form action="/peoples" method="post">' +
+               '<button type="submit">Go Paginate</button>' +
+            '</form>'+'<form action="/planets" method="post">' +
+               '<button type="submit">Go Paginate</button>' +
+            '</form>'+'<form action="/vehicles" method="post">' +
                '<button type="submit">Go Paginate</button>' +
             '</form>';
                
